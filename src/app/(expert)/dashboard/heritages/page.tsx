@@ -3,12 +3,12 @@
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react"
 
 import { heritagesData } from "@/lib/assets/data"
-import { Heritage, User } from "@/lib/assets/definitions"
+import { Heritage} from "@/lib/assets/definitions"
 import ItemSelector from "@/ui/Miscellanous/ItemsSelector"
 import Pagination from "@/ui/Miscellanous/Pagination"
 import DataTable from "@/ui/Miscellanous/DataTable"
-import { getAllUsers } from "@/lib/service/UserService";
 import { getAllHeritages } from "@/lib/service/expertService";
+import { toast } from "react-toastify";
 
 const HeritagePage = ()=>{
      
@@ -21,10 +21,11 @@ const HeritagePage = ()=>{
                 const users = await getAllHeritages();
                 if(users.error)
                 {
-                    console.error("Error fetching users:", users.error);
+                    toast.error("Error fetching heritages: " + users.error);
                     return;
                 }
                 setDataLoaded(users.data as Heritage[]);
+                toast.success("Liste des patrimoines mise à jour");
             }
             ,[]
         )

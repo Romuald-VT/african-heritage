@@ -1,6 +1,7 @@
 import { Heritage } from "@/lib/assets/definitions"
 import { verifyHeritage } from "@/lib/service/heritageService"
 import { ChangeEvent, useEffect, useState } from "react"
+import { toast } from "react-toastify"
 
 interface VerifyButtonModal {
     data:Heritage,
@@ -32,7 +33,7 @@ const VerifyButtonModal = ({data,closeModal,reloadMethod}:VerifyButtonModal)=>{
         const verifyResponse =await verifyHeritage(data.heritageName)
         if(verifyResponse.success)
         {
-            alert("Patrimoine verifié avec succes")
+            toast.success("Patrimoine verifié avec succes")
             handleClose()
             reloadMethod()
         }

@@ -4,6 +4,7 @@ import { handleUserLogin } from "@/lib/service/UserService"
 import Link from "next/link"
 import {useRouter,useSearchParams} from 'next/navigation'
 import { ChangeEvent, Suspense, useActionState, useEffect, useState } from "react"
+import { toast } from "react-toastify"
 
 
 const UserLoginForm = () =>{
@@ -21,13 +22,14 @@ const UserLoginForm = () =>{
         if(state?.success)
         {
             console.log(`connexion reussie redirection vers ${params}`)
+            toast.success("Bienvenu !")
             router.replace(redirect)
             router.refresh()
         }
 
         if(state?.error)
         {
-            console.log(state.error)
+            toast.error(state.error)
         }
     },[state,redirect,router,params])
 

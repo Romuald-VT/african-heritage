@@ -1,4 +1,5 @@
 import { handleUserDeletion } from "@/lib/service/UserService"
+import { toast } from "react-toastify"
 
 interface DeleteUserModalProps {
 
@@ -24,6 +25,7 @@ export default function DeleteUserModal({closeModal,email,reloadMethod}:DeleteUs
                         handleUserDeletion(email)
                         closeModal()
                         reloadMethod()
+                        toast.success("Utilisateur supprimé avec succès",{position: "top-right",autoClose: 3000})
                     }}>Supprimer</button>
                 </div>
             </div>

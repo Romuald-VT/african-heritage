@@ -1,12 +1,12 @@
 'use client'
 
 import Pagination from "@/ui/Miscellanous/Pagination"
-import { heritagesData, tableData } from "@/lib/assets/data"
 import { useState, useEffect, Suspense, useCallback, useMemo } from "react"
 import ItemSelector from "@/ui/Miscellanous/ItemsSelector"
 import UserTable from "@/ui/Miscellanous/UserTable"
 import { User } from "@/lib/assets/definitions"
 import { getAllUsers } from "@/lib/service/UserService"
+import { toast } from "react-toastify"
 
 const UserPage = () => {
     const [page, setPage] = useState(1)  // ✅ Commence à 1
@@ -20,10 +20,11 @@ const UserPage = () => {
             const users = await getAllUsers();
             if(users.error)
             {
-                console.error("Error fetching users:", users.error);
+                toast.error(users.error);
                 return;
             }
             setDataLoaded(users.data as User[]);
+            toast.success("Liste des utilisateurs mise à jour");
         }
         ,[]
     )

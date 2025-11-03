@@ -3,6 +3,7 @@
 import { handleExpertLogin } from "@/lib/service/expertService"
 import { ChangeEvent, Suspense, useActionState, useEffect, useState } from "react"
 import { useRouter,useSearchParams } from "next/navigation"
+import { toast } from "react-toastify"
 
 const ExpertLoginForm = () =>{
     
@@ -20,12 +21,13 @@ const ExpertLoginForm = () =>{
     if(state?.success == true)
     {   
         console.log(`connexion reussie redirection vers ${searchParams}`)
+        toast.success("Bienvenu Admin !")
         router.replace(redirect)  // Changé de push à replace
         router.refresh()           // Ajouté pour forcer le rafraîchissement
     }
     if(state?.error)
     {
-        setErrorMessage(state.error)
+        toast.error(state.error)
     }
 },[state, redirect, router, searchParams])
 

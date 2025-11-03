@@ -3,6 +3,7 @@
 import { handleUserRegistration } from "@/lib/service/UserService"
 import { ChangeEvent, Suspense, useActionState, useEffect, useState } from "react"
 import {useRouter,useSearchParams} from "next/navigation"
+import { toast } from "react-toastify"
 
 
 const UserRegistrationForm = ()=>{
@@ -22,11 +23,12 @@ const UserRegistrationForm = ()=>{
         if(state?.success)
         {
             console.log('enregistrement reussie redirection vers '+redirect)
+            toast.success("Inscription réussie !");
             router.replace(redirect);
             router.refresh()
         }
         else{ 
-            console.log(state?.error)
+            toast.error(state?.error)
         }
     }, [state, router, redirect])
 
