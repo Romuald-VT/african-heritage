@@ -18,7 +18,7 @@ export default function EditHeritageFormModal({showModalMethod, editableObject, 
     const [location, setLocation] = useState(editableObject.location)
     const [description, setDescription] = useState(editableObject.description)
     const [features, setFeatures] = useState(editableObject.features)
-    const [currentValue, setCurrentValue] = useState(editableObject.currentValue)
+    const [currentValue, setCurrentValue] = useState<number>(editableObject.currentValue)
     
     const [state,formAction,isPending] = useActionState(handleHeritageUpdate, null)
 
@@ -138,7 +138,7 @@ export default function EditHeritageFormModal({showModalMethod, editableObject, 
                             id="currentValue" 
                             name="currentValue"
                             value={currentValue}
-                            onChange={(e:ChangeEvent<HTMLInputElement>) =>{setCurrentValue(e.target.value)}} 
+                            onChange={(e:ChangeEvent<HTMLInputElement>) =>{ setCurrentValue(e.target.value === '' ? 0 : Number(e.target.value)) }} 
                             min={0} 
                             step="0.01" 
                             placeholder="0.00" 
