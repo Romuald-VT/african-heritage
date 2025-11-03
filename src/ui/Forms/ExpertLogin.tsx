@@ -59,7 +59,7 @@ const ExpertLoginForm = () =>{
                 </div>
             </form>
             <div className="w-full h-6 flex flex-row justify-center items-center z-50">
-                  <span>{errorMessage && <p className="text-red-500">{errorMessage}</p>}</span>
+                  <div>{errorMessage && <p className="text-red-500">{errorMessage}</p>}</div>
          </div>
         </section>
         
