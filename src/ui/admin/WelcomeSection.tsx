@@ -13,7 +13,7 @@ const WelcomeSection = ({ title, description,logoutFunction }: WelcomeSectionPro
       <h1 className="text-2xl font-bold text-gray-800 mb-4">{title}</h1>
       <p className="text-gray-600">{description}</p>
       <div className="hidden md:flex space-x-2">
-          <Button text="Deconnexion" to="/user-login" onClick={logoutFunction}/>
+          <button  onClick={logoutFunction}>Deconnexion</button>
         </div> 
     </div>
   );
