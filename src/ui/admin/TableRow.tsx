@@ -1,5 +1,4 @@
 import { User } from "@/lib/assets/definitions";
-import Image from "next/image";
 
 interface TableRowProps {
     user:User;

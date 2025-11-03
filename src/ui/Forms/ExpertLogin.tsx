@@ -57,6 +57,9 @@ const ExpertLoginForm = () =>{
                     <button className="appearance-none border border-[#e5e7eb]  bg-indigo-500  text-white  px-3.5 py-2.5 rounded-[10px] font-semibold cursor-pointer transition-all duration-150 hover:-translate-y-px hover:brightness-105" type="submit">{isPending?'Connexion...':'Connexion'}</button>
                 </div>
             </form>
+            <div className="w-full h-6 flex flex-row justify-center items-center">
+                  <span>{state?.error && <p className="text-red-500">{state.error}</p>}</span>
+            </div>
         </section>
     </main>
     )
